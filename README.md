@@ -366,6 +366,124 @@ WD           │    ◐    │    ○    │   ○    │   ○   │    ●    
 
 ---
 
+---
+
+## 🏭 Google TPU vs NVIDIA GPU: 10-Year Production Metrics (2015–2025)
+
+A decade-long comparison of the two dominant AI training/inference chips — Google's custom ASIC TPU series and NVIDIA's general-purpose GPU series — tracking architecture, process node, compute power, memory, deployment scale, and production volumes.
+
+### 📊 Google TPU Generations
+
+| Generation | Year | Process Node | Die Size | BF16/INT8 Peak (per chip) | Memory | Mem BW | Interconnect | TDP | Chips/Pod (max) | Key Innovation |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **TPU v1** | 2015 | 28nm | 331 mm² | 92 TOPS (INT8) | 8 GB DDR3 | 34 GB/s | N/A (PCIe card) | ~40W | N/A | First DNN inference ASIC; 256×256 systolic array; 28× perf/W vs CPU/GPU |
+| **TPU v2** | 2017 | ~20nm | ~450 mm² | 45 TFLOPS (BF16) | 16 GB HBM | ~600 GB/s | 2D torus (496 Gbps) | ~250W | 256 | **BF16 format**; first TPU for training+inference; 2D torus mesh |
+| **TPU v3** | 2018 | ~16nm | ~550 mm² | ~105 TFLOPS (BF16) | 32 GB HBM2 | ~900 GB/s | 2D torus (upgraded) | ~300W | 1024 | **Liquid cooling**; 2× v2 performance; AlphaFold training |
+| **TPU v4** | 2021 | 7nm | ~400 mm² | 275 TFLOPS (BF16) | 32 GB HBM2e | 1.2 TB/s | 3D torus + **OCS** | ~300W | 4096 | **Optical Circuit Switch**; SparseCore; >1 EFLOPS/pod; Gemini training |
+| **TPU v5e** | 2023 | ~5nm | — | 197 TFLOPS (BF16) | 16 GB HBM2e | ~820 GB/s | ICI (256 chips) | ~200W | 256 | Cost-optimized for inference; dense pod packing |
+| **TPU v5p** | 2023 | ~4nm | — | 459 TFLOPS (BF16) | 96 GB HBM2e | ~2.76 TB/s | ICI (8960 chips) | ~450W | 8960 | Training-optimized; 3× memory vs v5e; 4.5 EFLOPS/pod |
+| **TPU v6 "Trillium"** | 2024 | ~4nm | — | ~926 TFLOPS (BF16) | ~32 GB HBM | ~3.6 TB/s | Enhanced ICI | ~500W | 256 | 2nd-gen SparseCore; 4.7× v5e perf; Gemini 2.0 era |
+| **TPU v7 "Ironwood"** | 2025 | ~3nm | — | 42.5 **EFLOPS/pod** | Massive HBM | — | Next-gen ICI (9216 chips) | ~800W | **9216** | First exascale AI pod; trillion-parameter model scale |
+
+> **Fabrication**: All Google TPU chips are fabricated by **TSMC** (28nm → 3nm). Google contracts with **Broadcom** as the ASIC design partner. Google does not sell TPUs — they are exclusively available as **Cloud TPU** on Google Cloud.
+
+---
+
+### 📊 NVIDIA Data Center GPU Generations
+
+| Model | Year | Architecture | Process | Transistors | Die Size | FP32 (TFLOPS) | Tensor FP16/BF16 | Tensor FP8 | Tensor FP4 | Tensor INT8 (TOPS) | Memory | Mem BW | NVLink BW | TDP | Key Innovation |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **K40** | 2013 | Kepler GK110 | 28nm | 7.1B | 561 mm² | 4.3 | — | — | — | — | 12 GB GDDR5 | 288 GB/s | — | 235W | First HPC/ML Tesla GPU |
+| **M40** | 2015 | Maxwell GM200 | 28nm | 8.0B | 601 mm² | 6.1 | — | — | — | — | 12/24 GB GDDR5 | 288 GB/s | — | 250W | 2× perf/W vs Kepler |
+| **P100** | 2016 | Pascal GP100 | 16nm | 15.3B | 610 mm² | 9.3–10.6 | 18.7–21.2 | — | — | — | 16 GB HBM2 | 732 GB/s | 160 GB/s (v1) | 250–300W | First HBM2 GPU; NVLink 1.0; 16nm FinFET |
+| **V100** | 2017 | Volta GV100 | 12nm FFN | 21.1B | 815 mm² | 14–15.7 | 112–125 | — | — | — | 16/32 GB HBM2 | 900 GB/s | 300 GB/s (v2) | 250–350W | ⭐ **Tensor Cores**; 12× AI throughput vs P100; NVLink 2.0 |
+| **A100** | 2020 | Ampere GA100 | 7nm | 54.2B | 826 mm² | 19.5 | 312 | — | — | 624 | 40/80 GB HBM2e | 1.6–2.0 TB/s | 600 GB/s (v3) | 250–400W | **MIG**; TF32; BF16; sparsity 2×; NVSwitch |
+| **H100** | 2022 | Hopper GH100 | 4N | 80B | 814 mm² | 51–60 | 990 | 1,979 | — | 1,979 | 80 GB HBM3 | 3.35 TB/s | 900 GB/s (v4) | 350–700W | ⭐ **Transformer Engine + FP8**; DPX; TMA; Conf. Computing |
+| **H200** | 2024 | Hopper refresh | 4N | 80B | 814 mm² | same | same | same | — | same | 141 GB HBM3e | 4.8 TB/s | 900 GB/s | 700W | HBM3e upgrade; 1.8× LLM inference throughput |
+| **B100** | 2024 | Blackwell GB100 | 4NP | 208B | 2×~800 mm² | ~110 | ~2,250 | ~4,500 | ~9,000 | ~4,500 | 192 GB HBM3e | 8 TB/s | 1.8 TB/s (v5) | 700–1000W | ⭐ **FP4 (first)**; chiplet design; NVLink 5; 2nd-gen TE |
+| **B200** | 2024 | Blackwell Ultra | 4NP | 416B | 4×~800 mm² | ~220 | ~4,500 | ~9,000 | ~18,000 | ~9,000 | 384 GB HBM3e | 16 TB/s | 2×1.8 TB/s | ~2700W | **GB200 Superchip** (2×GPU + Grace CPU); NVLink-C2C |
+
+> **Fabrication**: All NVIDIA data center GPUs since P100 are fabricated by **TSMC** using **CoWoS** (Chip-on-Wafer-on-Substrate) advanced packaging. P100–V100 use CoWoS-S; H100 uses CoWoS-S; B100/B200 use CoWoS-L (silicon bridge). NVIDIA is TSMC's single largest customer — consuming >60% of CoWoS capacity in 2024.
+
+---
+
+### 📈 Production & Deployment Scale
+
+#### NVIDIA Data Center GPU: Revenue & Estimated Shipments
+
+| Fiscal Year | Data Center Revenue | Key Products | Est. Units Shipped | Peak Annual Rate |
+|---|---|---|---|---|
+| FY2017 (~2016) | $0.83B | P100 | ~250K | ~250K/yr |
+| FY2018 (~2017) | $1.93B | P100, V100 | ~500K | ~500K/yr |
+| FY2019 (~2018) | $2.93B | V100 | ~600K | ~600K/yr |
+| FY2020 (~2019) | $2.98B | V100, T4 | ~500K | ~500K/yr |
+| FY2021 (~2020) | $6.70B | A100 | ~800K | ~800K/yr |
+| FY2022 (~2021) | $10.6B | A100 | ~1.0M | ~1.0M/yr |
+| FY2023 (~2022) | $15.0B | A100, H100 | ~1.2M | ~1.2M/yr |
+| FY2024 (~2023) | **$47.5B** | H100, H200 | ~2.0M+ | ~2.0M/yr |
+| FY2025E (~2024) | **~$110B+** | H200, B100, B200 | ~3.0M+ | ~3.0M/yr |
+| FY2026E (~2025) | **~$140B+** | B200, GB200 | ~4.0M+ | ~4.0M/yr |
+
+> **Total NVIDIA Data Center GPUs shipped (2013–2025E):** ~12M–15M units (cumulative). **H100 alone:** ~3M–4M units (2022–2025). The H100 has become the single most commercially successful AI chip in history.
+
+#### Google TPU: Estimated Deployment Scale
+
+| Generation | Est. Chips Deployed | Notes |
+|---|---|---|
+| TPU v1 (2015–2017) | ~10K–20K | Internal Google only; inference ASIC for Search, Translate, Photos |
+| TPU v2 (2017–2019) | ~10K–20K | Cloud TPU launch; AlphaGo Zero, BERT training |
+| TPU v3 (2018–2021) | ~20K–50K | Large-scale training; AlphaFold, Meena, LaMDA |
+| TPU v4 (2021–2023) | **~100K–200K+** | Oklahoma data center ≈9 EFLOPS; PaLM, Gemini training; Google showcased >100K chips at I/O 2023 |
+| TPU v5e/v5p (2023–2025) | ~50K–100K+ | Production Gemini inference + Ultra training; dense pod deployment |
+| TPU v6 Trillium (2024–) | Rolling out | Next-gen training/inference; 4.7× v5e performance |
+| TPU v7 Ironwood (2025–) | 9,216 chips/pod | Single pod = 42.5 EFLOPS; multiple pods ordered |
+| **Total (all gens)** | **~200K–400K+** | All chips exclusively on Google Cloud; not sold to third parties |
+
+---
+
+### ⚡ Performance Scaling: 10-Year Trajectory
+
+```
+Year    │ GPU (FP16/BF16 TFLOPS)  │ TPU (BF16 TFLOPS)    │ GPU to TPU
+────────┼─────────────────────────┼──────────────────────┼───────────
+2015    │ M40: ~3 (est.)          │ —                    │ N/A
+2016    │ P100: 21.2              │ —                    │ N/A
+2017    │ V100: 125               │ v2: 45               │ 2.8 : 1
+2018    │ V100: 125               │ v3: 105              │ 1.2 : 1
+2019    │ V100: 125               │ v3: 105              │ 1.2 : 1
+2020    │ A100: 312               │ —                    │ N/A
+2021    │ A100: 312               │ v4: 275              │ 1.1 : 1
+2022    │ H100: 990               │ v4: 275              │ 3.6 : 1
+2023    │ H100: 990               │ v5p: 459             │ 2.2 : 1
+2024    │ B100: 2,250             │ v6: 926              │ 2.4 : 1
+2025E   │ B200: 4,500             │ v7: ~1,850+          │ ~2.4 : 1
+────────┴─────────────────────────┴──────────────────────┴───────────
+GPU perf increased ~212× from M40 (2015) to B200 (2024) in FP16/BF16
+TPU perf increased ~41× from v2 (2017) to v6 (2024) in BF16
+```
+
+---
+
+### 🔑 Production Line & Supply Chain Comparison
+
+| Dimension | Google TPU | NVIDIA GPU |
+|---|---|---|
+| **Fab partner** | TSMC (exclusive) | TSMC (exclusive for leading-edge) |
+| **ASIC designer** | Broadcom (custom contract) | NVIDIA (in-house) |
+| **Advanced packaging** | CoWoS-like (Google's interposer design) | CoWoS-S / CoWoS-L (TSMC standard) |
+| **Packaging bottleneck** | Moderate (smaller allocation) | **Severe** (consumes >60% CoWoS capacity; primary constraint for H100/B200 ramp) |
+| **Wafer allocation (2024)** | ~5–10% TSMC advanced capacity | ~50–60% TSMC advanced capacity (largest customer) |
+| **Memory vendor** | Samsung / SK Hynix (HBM) | SK Hynix (primary), Samsung, Micron (HBM) |
+| **System integrator** | Google (in-house ODM) | Foxconn, Quanta, Wistron, Supermicro, Dell, HPE, etc. |
+| **Sales model** | Cloud-only (GCP), not sold as product | OEM + cloud (AWS, Azure, GCP, Oracle, etc.) + direct (DGX) |
+| **ASP per chip (2024)** | N/A (internal cost ~$5K–10K) | H100: ~$25K–35K; B200: ~$30K–40K; GB200: ~$70K+ |
+| **Trade restrictions** | Not export-controlled (cloud service only) | **US export controls** (China, Russia, etc.) limit H100/B200 shipments |
+| **Production ramp challenge** | Pod-level integration + OCS calibration | **TSMC CoWoS capacity** is the #1 bottleneck through 2025 |
+
+> **Key insight**: NVIDIA's GPU production is constrained not by demand but by TSMC's advanced packaging (CoWoS) capacity. NVIDIA has been investing billions to secure additional CoWoS allocation. Google's TPU production faces less acute packaging constraints due to smaller volumes, but pod-level optical circuit switch calibration (for v4+) is a unique manufacturing complexity.
+
+---
+
 ## 🤝 Contributing
 
 PRs welcome! If you know of open-source chip design projects from major IC companies that are missing here, please submit a pull request.
