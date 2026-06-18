@@ -6,47 +6,48 @@ A curated summary of open-source chip design projects released by the world's le
 
 ## 📊 Master Summary Table
 
-> **Columns**: Project Name | Company | Category | Key Value | Application Scenarios | Star Rating
+> **Columns**: Project Name | Company | Category | Key Value | Application Scenarios | Silicon Proven
 
 ### 🔷 General-Purpose Processor Cores
 
-| Project | Company | Category | Key Value | Application Scenarios |
-|---------|---------|----------|-----------|----------------------|
-| [A2O / A2I](https://github.com/openpower-cores/a2i) | **IBM** | CPU Core (POWER) | Out-of-order POWER processor core, multi-threaded (4-way SMT), up to 2.3 GHz | HPC, data center servers, cloud computing |
-| [Microwatt](https://github.com/antonblanchard/microwatt) | **IBM** | CPU Core (POWER) | OpenPOWER soft-core in VHDL, small footprint FPGA implementation | Embedded systems, FPGA prototyping |
-| [Nios V](https://www.intel.com/content/www/us/en/products/details/fpga/nios-processor/v.html) | **Intel** | CPU Core (RISC-V) | RISC-V soft processor for Intel FPGAs, RV32IA support | Embedded control, industrial IoT, automotive |
-| [XuanTie (玄铁) Series](https://github.com/T-head-Semi) | **Alibaba T-Head** | CPU Core (RISC-V) | High-performance RISC-V cores (C906, C910 up to 2.5 GHz), Linux-capable | IoT, edge computing, AI inference, servers |
-| [SweRV Cores](https://github.com/chipsalliance/Cores-SweRV) | **Western Digital** | CPU Core (RISC-V) | 2-way superscalar, 9-stage pipeline, up to 4.9 CoreMark/MHz | Storage controllers, embedded SoCs, IoT |
+| Project | Company | Category | Key Value | Application Scenarios | Silicon Proven? |
+|---------|---------|----------|-----------|----------------------|:---:|
+| [A2O / A2I](https://github.com/openpower-cores/a2i) | **IBM** | CPU Core (POWER) | Out-of-order POWER processor core, multi-threaded (4-way SMT), up to 2.3 GHz | HPC, data center servers, cloud computing | ✅ Yes (POWER8/9) |
+| [Microwatt](https://github.com/antonblanchard/microwatt) | **IBM** | CPU Core (POWER) | OpenPOWER soft-core in VHDL, small footprint FPGA implementation | Embedded systems, FPGA prototyping | ✅ FPGA-proven |
+| [Nios V](https://www.intel.com/content/www/us/en/products/details/fpga/nios-processor/v.html) | **Intel** | CPU Core (RISC-V) | RISC-V soft processor for Intel FPGAs, RV32IA support | Embedded control, industrial IoT, automotive | ✅ FPGA-proven |
+| [XuanTie C906](https://github.com/T-head-Semi/openc906) | **Alibaba T-Head** | CPU Core (RISC-V) | In-order RISC-V core, mass-produced in D1 SoC | IoT, smart devices, edge computing | ✅ Mass production |
+| [XuanTie C910](https://github.com/T-head-Semi/openc910) | **Alibaba T-Head** | CPU Core (RISC-V) | Out-of-order RISC-V core, up to 2.5 GHz, Linux-capable | Servers, edge AI, cloud computing | ✅ Taped out |
+| [SweRV Cores](https://github.com/chipsalliance/Cores-SweRV) | **Western Digital** | CPU Core (RISC-V) | 2-way superscalar, 9-stage pipeline, up to 4.9 CoreMark/MHz | Storage controllers, embedded SoCs, IoT | ✅ Production use |
 
 ---
 
 ### 🔶 AI/ML Accelerators
 
-| Project | Company | Category | Key Value | Application Scenarios |
-|---------|---------|----------|-----------|----------------------|
-| [NVDLA](https://github.com/nvdla/hw) | **NVIDIA** | Deep Learning Accelerator | Full open-source RTL for deep learning inference, scalable architecture (Small/Large) | Edge AI, autonomous vehicles, smart cameras, robotics |
-| [CFU Playground](https://github.com/google/CFU-Playground) | **Google** | ML Accelerator Framework | Custom function unit design framework for ML on FPGAs, tightly coupled to RISC-V | Edge ML, TinyML, keyword spotting, gesture recognition |
-| [XLS (Accelerator Synthesis)](https://github.com/google/xls) | **Google** | HLS Toolchain | High-level synthesis from C++/DSLX to Verilog, flexible accelerator design flow | Custom accelerator design, ASIC/FPGA data path |
+| Project | Company | Category | Key Value | Application Scenarios | Silicon Proven? |
+|---------|---------|----------|-----------|----------------------|:---:|
+| [NVDLA](https://github.com/nvdla/hw) | **NVIDIA** | Deep Learning Accelerator | Full open-source RTL for deep learning inference, scalable architecture (Small/Large) | Edge AI, autonomous vehicles, smart cameras, robotics | ✅ Yes (Xavier, Jetson) |
+| [CFU Playground](https://github.com/google/CFU-Playground) | **Google** | ML Accelerator Framework | Custom function unit design framework for ML on FPGAs, tightly coupled to RISC-V | Edge ML, TinyML, keyword spotting, gesture recognition | ⚠️ FPGA-only |
+| [XLS (Accelerator Synthesis)](https://github.com/google/xls) | **Google** | HLS Toolchain | High-level synthesis from C++/DSLX to Verilog, flexible accelerator design flow | Custom accelerator design, ASIC/FPGA data path | N/A (tool) |
 
 ---
 
 ### 🔷 SoC Platforms & Security
 
-| Project | Company | Category | Key Value | Application Scenarios |
-|---------|---------|----------|-----------|----------------------|
-| [OpenTitan](https://github.com/lowRISC/opentitan) | **Google** (co-led) | Silicon Root of Trust | Industry-first open-source secure silicon RoT, hardware security module | Secure boot, TPM replacement, data center security, Chromebooks |
-| [OpenPOWER](https://github.com/open-power) | **IBM** | ISA & Ecosystem | Open ISA with reference designs, hardware abstraction layer | High-end servers, heterogeneous computing, cloud |
-| [OpenCAPI](https://github.com/opencapi) | **IBM** | Coherent Interface | Open high-bandwidth coherent bus interface (25 GT/s) | Accelerator-attached memory, heterogeneous system architecture |
+| Project | Company | Category | Key Value | Application Scenarios | Silicon Proven? |
+|---------|---------|----------|-----------|----------------------|:---:|
+| [OpenTitan](https://github.com/lowRISC/opentitan) | **Google** (co-led) | Silicon Root of Trust | Industry-first open-source secure silicon RoT, hardware security module | Secure boot, TPM replacement, data center security, Chromebooks | ✅ Yes (Earl Grey) |
+| [OpenPOWER](https://github.com/open-power) | **IBM** | ISA & Ecosystem | Open ISA with reference designs, hardware abstraction layer | High-end servers, heterogeneous computing, cloud | ✅ Yes (POWER HW) |
+| [OpenCAPI](https://github.com/opencapi) | **IBM** | Coherent Interface | Open high-bandwidth coherent bus interface (25 GT/s) | Accelerator-attached memory, heterogeneous system architecture | ✅ Yes (POWER9/10) |
 
 ---
 
 ### 🔶 FPGA & Development Platforms
 
-| Project | Company | Category | Key Value | Application Scenarios |
-|---------|---------|----------|-----------|----------------------|
-| [Vitis Libraries](https://github.com/Xilinx/Vitis_Libraries) | **AMD / Xilinx** | FPGA Acceleration Library | Open-source HLS libraries for finance, ML, database acceleration | FinTech, quantitative trading, genomics, video processing |
-| [PYNQ](https://github.com/Xilinx/PYNQ) | **AMD / Xilinx** | FPGA Framework | Python productivity for FPGA-based systems, Jupyter-based | Education, rapid FPGA prototyping, edge computing |
-| [FuseSoC](https://github.com/olofk/fusesoc) | **Intel** (community) | IP Package Manager | Build and package management system for HDL designs | RTL IP reuse, CI/CD for hardware design |
+| Project | Company | Category | Key Value | Application Scenarios | Silicon Proven? |
+|---------|---------|----------|-----------|----------------------|:---:|
+| [Vitis Libraries](https://github.com/Xilinx/Vitis_Libraries) | **AMD / Xilinx** | FPGA Acceleration Library | Open-source HLS libraries for finance, ML, database acceleration | FinTech, quantitative trading, genomics, video processing | N/A (library) |
+| [PYNQ](https://github.com/Xilinx/PYNQ) | **AMD / Xilinx** | FPGA Framework | Python productivity for FPGA-based systems, Jupyter-based | Education, rapid FPGA prototyping, edge computing | N/A (framework) |
+| [FuseSoC](https://github.com/olofk/fusesoc) | **Intel** (community) | IP Package Manager | Build and package management system for HDL designs | RTL IP reuse, CI/CD for hardware design | N/A (tool) |
 
 ---
 
@@ -144,7 +145,9 @@ A curated summary of open-source chip design projects released by the world's le
 | **Huawei LiteOS** | [atomgit.com/LiteOS](https://atomgit.com/LiteOS) | Lightweight real-time IoT OS, ported to Cortex-M, RISC-V, and HiSilicon IoT chips | ⚡ Mature |
 | **Oniro (OpenAtom)** | [oniroproject.org](https://oniroproject.org/) | Eclipse Foundation multi-kernel OS (Zephyr + Linux), Huawei-contributed, multi-chip platform | ⭐ Active |
 
-> **Key insight**: HUAWEI is the **only** company in this survey that runs its entire chip software stack (OS → database → AI framework → accelerators → security) on its own open-source forge (AtomGit/GitCode). No other chip giant has matched this ecosystem-wide open-source play. However, **chip RTL/design files remain proprietary** — the openness is at the software ecosystem layer surrounding the silicon.
+> **Key insight**: HUAWEI is the **only** company in this survey that runs its entire chip software stack (OS → database → AI framework → accelerators → security) on its own open-source forge (AtomGit/GitCode). No other chip giant has matched this ecosystem-wide open-source play.
+
+> **🔬 Hardware RTL note**: HUAWEI/HiSilicon has **one** official open-source hardware RTL project — `huaweicloud/huaweicloud-fpga` (57★), which contains Verilog & SystemVerilog for FPGA cloud acceleration (DMA, FMMU, memory controllers). This is a cloud FPGA platform SDK with example designs, not a library of reusable ASIC IP cores. HUAWEI's core processor designs (Kunpeng, Ascend, Kirin) remain fully proprietary at the RTL level.
 
 ---
 
@@ -199,6 +202,45 @@ A curated summary of open-source chip design projects released by the world's le
 
 ---
 
+### 🏫 Prof. Bao Yungang (包云岗) / CAS-ICT — XiangShan Ecosystem
+
+> Led by Prof. Bao Yungang at the Institute of Computing Technology, Chinese Academy of Sciences (CAS-ICT), the **XiangShan (香山)** project is the world's highest-performance open-source RISC-V processor. Backed by the Beijing Institute of Open Source Chip (BOSC / 北京开源芯片研究院), a consortium of 16+ companies. GitHub: [OpenXiangShan](https://github.com/OpenXiangShan) — 4,500+ stars.
+
+#### 🏔️ XiangShan (香山) Processor Generations
+
+| Generation | Code Name | Specs | Process Node | Tape-out Date | Silicon Proven | Status |
+|-----------|-----------|-------|-------------|--------------|:---:|--------|
+| **1st Gen** | Yanqihu (雁栖湖) | RV64GC, Single-core, 1.3 GHz | 28nm | Jul 2021 | ✅ Brought up Jan 2022, boots Linux/Debian, SPEC CPU2006 = 7+ @1GHz | ✅ Released ([v1.0](https://github.com/OpenXiangShan/XiangShan/releases/tag/v1.0)) |
+| **2nd Gen V1** | Nanhu (南湖) | RV64GCBK, Dual-core, 2.0 GHz | 14nm | Nov 2023 | ✅ GDSII frozen Jun 2023, tape-out Nov 2023, bring-up success | ✅ Released ([v2.0](https://github.com/OpenXiangShan/XiangShan/releases/tag/v2.0)) |
+| **2nd Gen V2** | Nanhu V2 | RV64GCBK + MBIST | 14nm | Apr 2023 | ✅ Brought up Oct 2023, runs Linux | ✅ Released ([v2.1](https://github.com/OpenXiangShan/XiangShan/releases/tag/v2.1)) |
+| **3rd Gen** | Kunminghu (昆明湖) | Next-gen microarchitecture | TBD | In development | 🔄 In progress | 🔄 Active dev |
+
+#### 🧩 XiangShan Ecosystem Projects
+
+| Project | Repository | Key Value | Silicon Proven |
+|---------|-----------|-----------|:---:|
+| **XiangShan Core** | [OpenXiangShan/XiangShan](https://github.com/OpenXiangShan/XiangShan) | Chisel-based high-performance RISC-V core, 4,500+ stars, 550+ forks — world's most-watched open-source hardware project | ✅ Multiple tapeouts |
+| **NutShell (果壳)** | [OSCPU/NutShell](https://github.com/OSCPU/NutShell) | Academic RISC-V processor, precursor to XiangShan, 1st "One Student One Chip" cohort output | ✅ 110nm tapeout (2020) |
+| **XS-Verilog-Library** | [OpenXiangShan/XS-Verilog-Library](https://github.com/OpenXiangShan/XS-Verilog-Library) | Verilog/SystemVerilog contributions to XiangShan (for engineers preferring Verilog over Chisel) | N/A |
+| **NEMU** | [OpenXiangShan/NEMU](https://github.com/OpenXiangShan/NEMU) | High-performance ISA simulator supporting RISC-V, x86, MIPS, and more | N/A (tool) |
+| **XiangShan Docs** | [docs.xiangshan.cc](https://docs.xiangshan.cc) | Complete microarchitecture documentation (雁栖湖/南湖/昆明湖), user guide, integration guide | N/A (docs) |
+
+#### 📚 YSYX (一生一芯 / "One Student One Chip") Program
+
+| Aspect | Details |
+|--------|---------|
+| **Launched** | 2019 by Prof. Bao Yungang at CAS-ICT |
+| **Goal** | Enable every undergraduate student to design and tape out their own processor chip |
+| **Scale** | 2,000+ students trained across 100+ universities |
+| **Process** | Students learn RTL design → build a RISC-V CPU → tape out via multi-project wafer (MPW) |
+| **Results** | 10+ different student-designed processor chips fabricated and verified |
+| **Key Innovation** | Democratizing chip design education — proving that chip design can be taught at scale |
+| **URL** | [ysyx.oscc.cc](https://ysyx.oscc.cc/) |
+
+> **Significance**: XiangShan is the only open-source processor project with a regular tape-out cadence (~6 months per microarchitecture iteration). It's the closest open-source equivalent to commercial-grade high-performance processors. Presented at ISCA, MICRO, HPCA, ASPLOS — all top-tier computer architecture conferences.
+
+---
+
 ## 📈 Comparison: Open-Source Hardware Maturity by Company
 
 ```
@@ -217,6 +259,7 @@ Apple            │    ○     │    ○     │      ○       │     ○   
 Marvell          │    ○     │    ○     │      ○       │     ○     │     ○
 Alibaba T-Head   │    ●     │    ○     │      ○       │     ○     │     ○
 Western Digital  │    ●     │    ○     │      ○       │     ○     │     ○
+XiangShan/CAS    │    ●     │    ○     │      ○       │     ○     │     ○
 ─────────────────┴──────────┴──────────┴──────────────┴───────────┴────────────
 ● = Significant open-source  ◐ = Partial/emerging  ○ = Minimal/none
 ```
@@ -232,6 +275,7 @@ Western Digital  │    ●     │    ○     │      ○       │     ○   
 5. **RISC-V** is the primary ISA enabling open-source CPU cores from Alibaba (XuanTie), WD (SweRV), and many startups.
 6. **Apple, Qualcomm, MediaTek, Marvell** essentially have **zero** open-source chip design — their contributions are limited to software SDKs.
 7. **HUAWEI** is unique in open-sourcing its entire chip **software ecosystem** (OS → DB → AI → security) on its own forge (AtomGit), but keeps chip RTL proprietary.
+8. **Prof. Bao Yungang's XiangShan (CAS-ICT)** is the world's only open-source project with an industrial-grade, regularly taping-out high-performance RISC-V processor (4,500+ GitHub stars, 14nm/2GHz).
 
 ---
 
